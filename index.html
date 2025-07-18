@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>For Elin</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ffe0f0, #d0f0ff); /* gradasi pink terang ke biru terang */
+      font-family: 'Times New Roman', Times, serif;
+    }
+
+    .message-container {
+      position: relative;
+      width: 80%;
+      max-width: 600px;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.6); /* putih transparan lebih jelas */
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+      text-align: center;
+      color: #333;
+      z-index: 1;
+    }
+
+    h1 {
+      font-family: 'Alex Brush', cursive;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .message {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .play-btn {
+      background-color: #ffccd5;
+      color: #333;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1rem;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Times New Roman', Times, serif;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .play-btn:hover {
+      background-color: #ffb6c1;
+      transform: translateY(-3px);
+    }
+
+    .play-btn.playing {
+      background-color: #ff6b81;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="message-container" id="messageBox">
+    <h1>Dear Elin</h1>
+    <div class="message">
+      <p>I have crush on you about, Diam-diam aku berharap, suatu hari bisa melihat senyummu setiap hari, bukan hanya lewat sekilas pandang.</p>
+      <p>I just wanted you to know how I feel. No matter what your answer is, I’m glad I could be honest with you</p>
+    </div>
+    <button class="play-btn" id="playButton">Play</button>
+  </div>
+
+  <audio id="romanticSong" src="ESTEKA.mp3" preload="auto"></audio>
+
+  <script>
+    const playButton = document.getElementById('playButton');
+    const song = document.getElementById('romanticSong');
+    const messageContainer = document.getElementById('messageBox');
+    let isPlaying = false;
+
+    playButton.addEventListener('click', function () {
+      if (isPlaying) {
+        song.pause();
+        song.currentTime = 0;
+        this.textContent = 'Putar Lagu Romantis';
+        this.classList.remove('playing');
+      } else {
+        song.play();
+        this.textContent = 'Berhenti';
+        this.classList.add('playing');
+      }
+      isPlaying = !isPlaying;
+    });
+  </script>
+</body>
+</html>
